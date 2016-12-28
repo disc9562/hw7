@@ -1,0 +1,261 @@
+# depslib dependency file v1.0
+1475652066 source:c:\users\posd\desktop\posd2016f\shapes\main.cpp
+	"..\cppunitlite\TestHarness.h"
+	"utShapes.h"
+
+1473838394 c:\users\posd\desktop\posd2016f\cppunitlite\testharness.h
+	"Test.h"
+	"TestResult.h"
+	"Failure.h"
+	"TestRegistry.h"
+
+1473838394 c:\users\posd\desktop\posd2016f\cppunitlite\test.h
+	<cmath>
+	"SimpleString.h"
+
+1473838394 c:\users\posd\desktop\posd2016f\cppunitlite\simplestring.h
+
+1473838394 c:\users\posd\desktop\posd2016f\cppunitlite\testresult.h
+
+1473838394 c:\users\posd\desktop\posd2016f\cppunitlite\failure.h
+	"SimpleString.h"
+
+1473838394 c:\users\posd\desktop\posd2016f\cppunitlite\testregistry.h
+
+1476417048 c:\users\posd\desktop\posd2016f\shapes\utshapes.h
+	"..\cppunitlite\TestHarness.h"
+	"Shapes.h"
+	"ShapeMedia.h"
+	<vector>
+	<iostream>
+
+1476417699 c:\users\posd\desktop\posd2016f\shapes\shapes.h
+	<vector>
+	<string>
+	<sstream>
+
+1476417375 c:\users\posd\desktop\posd2016f\shapes\shapemedia.h
+	"Shapes.h"
+	<vector>
+	<string>
+
+1476581098 source:c:\users\jay\desktop\posd\posd2016f_3\shapes\main.cpp
+	"..\cppunitlite\TestHarness.h"
+	"utShapes.h"
+
+1476581098 c:\users\jay\desktop\posd\posd2016f_3\cppunitlite\testharness.h
+	"Test.h"
+	"TestResult.h"
+	"Failure.h"
+	"TestRegistry.h"
+
+1476581098 c:\users\jay\desktop\posd\posd2016f_3\cppunitlite\test.h
+	<cmath>
+	"SimpleString.h"
+
+1476581094 c:\users\jay\desktop\posd\posd2016f_3\cppunitlite\simplestring.h
+
+1476581098 c:\users\jay\desktop\posd\posd2016f_3\cppunitlite\testresult.h
+
+1476581094 c:\users\jay\desktop\posd\posd2016f_3\cppunitlite\failure.h
+	"SimpleString.h"
+
+1476581098 c:\users\jay\desktop\posd\posd2016f_3\cppunitlite\testregistry.h
+
+1477915474 c:\users\jay\desktop\posd\posd2016f_3\shapes\utshapes.h
+	"..\cppunitlite\TestHarness.h"
+	"Shapes.h"
+	"ShapeMedia.h"
+	<vector>
+	<math.h>
+	<iostream>
+
+1477724198 c:\users\jay\desktop\posd\posd2016f_3\shapes\shapes.h
+	<vector>
+	<string>
+	<sstream>
+
+1477916026 c:\users\jay\desktop\posd\posd2016f_3\shapes\shapemedia.h
+	"Shapes.h"
+	<vector>
+	<string>
+
+1476581098 source:c:\users\jay\desktop\posd2016f_3\shapes\main.cpp
+	"..\cppunitlite\TestHarness.h"
+	"utShapes.h"
+
+1476581098 c:\users\jay\desktop\posd2016f_3\cppunitlite\testharness.h
+	"Test.h"
+	"TestResult.h"
+	"Failure.h"
+	"TestRegistry.h"
+
+1476581098 c:\users\jay\desktop\posd2016f_3\cppunitlite\test.h
+	<cmath>
+	"SimpleString.h"
+
+1476581094 c:\users\jay\desktop\posd2016f_3\cppunitlite\simplestring.h
+
+1476581098 c:\users\jay\desktop\posd2016f_3\cppunitlite\testresult.h
+
+1476581094 c:\users\jay\desktop\posd2016f_3\cppunitlite\failure.h
+	"SimpleString.h"
+
+1476581098 c:\users\jay\desktop\posd2016f_3\cppunitlite\testregistry.h
+
+1476671031 c:\users\jay\desktop\posd2016f_3\shapes\utshapes.h
+	"..\cppunitlite\TestHarness.h"
+	"Shapes.h"
+	"ShapeMedia.h"
+	<vector>
+	<math.h>
+	<iostream>
+
+1476581098 c:\users\jay\desktop\posd2016f_3\shapes\shapes.h
+	<vector>
+	<string>
+	<sstream>
+
+1476670190 c:\users\jay\desktop\posd2016f_3\shapes\shapemedia.h
+	"Shapes.h"
+	<vector>
+	<string>
+
+1481103980 source:c:\users\jay\desktop\posd_hw4\shapes\main.cpp
+	"..\cppunitlite\TestHarness.h"
+	"utShapes.h"
+	"Document.h"
+	<stdio.h>
+	<string.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1476527098 c:\users\jay\desktop\posd_hw4\cppunitlite\testharness.h
+	"Test.h"
+	"TestResult.h"
+	"Failure.h"
+	"TestRegistry.h"
+
+1476527098 c:\users\jay\desktop\posd_hw4\cppunitlite\test.h
+	<cmath>
+	"SimpleString.h"
+
+1476527094 c:\users\jay\desktop\posd_hw4\cppunitlite\simplestring.h
+
+1476527098 c:\users\jay\desktop\posd_hw4\cppunitlite\testresult.h
+
+1476527094 c:\users\jay\desktop\posd_hw4\cppunitlite\failure.h
+	"SimpleString.h"
+
+1476527098 c:\users\jay\desktop\posd_hw4\cppunitlite\testregistry.h
+
+1481099917 c:\users\jay\desktop\posd_hw4\shapes\utshapes.h
+	"..\cppunitlite\TestHarness.h"
+	"Shapes.h"
+	"ShapeMedia.h"
+	<vector>
+	<math.h>
+	<iostream>
+
+1481079445 c:\users\jay\desktop\posd_hw4\shapes\shapes.h
+	<vector>
+	<string>
+	<sstream>
+
+1481104036 c:\users\jay\desktop\posd_hw4\shapes\shapemedia.h
+	"Shapes.h"
+	<vector>
+	<string>
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<stack>
+	<stdlib.h>
+	<map>
+
+1481100274 c:\users\jay\desktop\posd_hw4\shapes\document.h
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1482891318 source:c:\users\jay\desktop\posd_hw7\shapes\main.cpp
+	"..\cppunitlite\TestHarness.h"
+	"utShapes.h"
+	"Document.h"
+	"Command.h"
+	"conio.h"
+	<stdio.h>
+	<string.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+
+1476527098 c:\users\jay\desktop\posd_hw7\cppunitlite\testharness.h
+	"Test.h"
+	"TestResult.h"
+	"Failure.h"
+	"TestRegistry.h"
+
+1476527098 c:\users\jay\desktop\posd_hw7\cppunitlite\test.h
+	<cmath>
+	"SimpleString.h"
+
+1476527094 c:\users\jay\desktop\posd_hw7\cppunitlite\simplestring.h
+
+1476527098 c:\users\jay\desktop\posd_hw7\cppunitlite\testresult.h
+
+1476527094 c:\users\jay\desktop\posd_hw7\cppunitlite\failure.h
+	"SimpleString.h"
+
+1476527098 c:\users\jay\desktop\posd_hw7\cppunitlite\testregistry.h
+
+1482829684 c:\users\jay\desktop\posd_hw7\shapes\utshapes.h
+	"..\cppunitlite\TestHarness.h"
+	"Shapes.h"
+	"ShapeMedia.h"
+	"Command.h"
+	<vector>
+	<math.h>
+	<map>
+	<iostream>
+
+1481079445 c:\users\jay\desktop\posd_hw7\shapes\shapes.h
+	<vector>
+	<string>
+	<sstream>
+
+1481104036 c:\users\jay\desktop\posd_hw7\shapes\shapemedia.h
+	"Shapes.h"
+	<vector>
+	<string>
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<stack>
+	<stdlib.h>
+	<map>
+
+1481100274 c:\users\jay\desktop\posd_hw7\shapes\document.h
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1482747026 c:\users\jay\desktop\posd_hw7\shapes\command.h
+	<stack>
+	<map>
+	<string>
+	<vector>
+	"utShapes.h"
+	"Document.h"
+
+1198740218 c:\users\jay\desktop\posd_hw7\shapes\conio.h
+	<_mingw.h>
+
+1482833509 c:\users\jay\desktop\posd_hw7\shapes\signal1.h
+	<_mingw.h>
+
