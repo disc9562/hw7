@@ -63,7 +63,7 @@ public :
     virtual void accept(MediaVisitor * mv) {};
     virtual void accept(DescriptionVisitor * dv) {};
     virtual void accept(NameVisitor * nv) {};
-    virtual void removeMedia(Media *m) {};
+    virtual void removeMedia(vector<Media *> *removeVector, Media *m) {};
     virtual void setMedia(map<std::string, Media *> *mapMedia,vector<string> *s) {};
     virtual void add(Media * m) {
         throw std::string("Illegal: add on media");
@@ -86,7 +86,7 @@ public :
         nv -> visitShapeMedia(this);
     }
     double area() const { return shape->area() ; }
-    //void removeMedia(Media *m){}
+    void removeMedia(vector<Media *> *removeVector, Media *m){}
     double perimeter() const { return shape->perimeter() ; }
     Shape * getShape()const {return shape;}
     void setMedia(map<std::string, Media *> *mapMedia, vector<string> *s) {
@@ -134,15 +134,16 @@ public:
     void add (Media *m) {
         media.push_back(m);
     }
-    void removeMedia(Media *m){
+    void removeMedia(vector<Media *> *removeVector, Media *m){
         std::vector <Media *>::const_iterator it;
         for(it = media.begin();it != media.end();++it){
             if((*it) == m){
+                removeVector->push_back(this);
                 it = media.erase(it);
                 break;
             }
             else
-                (*it)->removeMedia(m);
+                (*it)->removeMedia(removeVector, m);
         }
     }
     void setMedia(map<string, Media *> *mapMedia, vector<string> *s) {

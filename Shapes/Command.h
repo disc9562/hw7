@@ -28,12 +28,14 @@ public:
     }
 
     void RedoCMD(){
+        if(redocmds.empty()) return;
         redocmds.top()->Redo();
         undocmds.push(redocmds.top());
         redocmds.pop();
     }
 
     void UndoCMD(){
+        if(undocmds.empty()) return;
         undocmds.top()->Undo();
         redocmds.push(undocmds.top());
         undocmds.pop();
@@ -72,7 +74,7 @@ public:
         Media *cm = iter->second;
 
         iter = cmdMap->find(from);
-        cm->removeMedia(iter->second);
+        cm->removeMedia(&removeVector, iter->second);
     }
 
     void Redo(){
@@ -87,6 +89,7 @@ public:
 private:
     string from;
     string to;
+    vector <Media* > removeVector;
 };
 Shape * newShape(const string temp);
 class DefCommand : public Command{
@@ -147,11 +150,11 @@ public:
 
     void Execute(){
         map<string, Media*>::iterator iter;
-        cacheMap = *cmdMap;
         if (argvBuffer.size() == 2){
             iter = cmdMap->find(argvBuffer[1]);
+            mediaRemove = iter->second;
             for(map<string, Media*>::iterator it = cmdMap->begin(); it != cmdMap->end(); it++){
-                it -> second -> removeMedia(iter -> second);
+                it -> second -> removeMedia(&removeVector, mediaRemove);
             }
             cmdMap->erase(iter);
         }
@@ -160,12 +163,30 @@ public:
             Media *cm = iter -> second;
 
             iter = cmdMap->find(argvBuffer[1]);
-            cm -> removeMedia(iter -> second);
+            mediaRemove = iter->second;
+
+            cm->removeMedia(&removeVector, mediaRemove);
         }
     }
 
     void Undo(){
-        *cmdMap = cacheMap;
+        switch(argvBuffer.size()){
+            case 2:{
+                for(Media* m: removeVector){
+                    m->add(mediaRemove);
+                }
+                removeVector.clear();
+                cmdMap->insert(pair<string, Media*>(argvBuffer[1],mediaRemove));
+            }
+            break;
+            case 4:{
+                for(Media* m:removeVector){
+                    m->add(mediaRemove);
+                }
+                removeVector.clear();
+            }
+            break;
+        }
     }
 
     void Redo(){
@@ -174,7 +195,8 @@ public:
 
 private:
     vector<string> argvBuffer;
-    map<string, Media*> cacheMap;
+    Media* mediaRemove;
+    vector <Media* > removeVector;
 };
 Shape * newShape(const string temp){
     int startIndex = temp.find('(',0);
