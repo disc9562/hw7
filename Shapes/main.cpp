@@ -20,7 +20,8 @@
 using namespace std;
 
 Shape * newShape(const string temp);
-inline bool isKeyDown(int VirtualCode)
+void ReUnCommand(CommandManager *cm);
+/*inline bool isKeyDown(int VirtualCode)
 {
    return (GetKeyState(VirtualCode) & HIGH_ORDER_BIT);
 }
@@ -44,29 +45,19 @@ void keyevent()
        }
        std::this_thread::sleep_for(std::chrono::milliseconds(100));
    }
-}
+}*/
 
 int main()
 {
-    //char key;
-    //int asciiValue;
     TestResult tr;
     TestRegistry::runAllTests(tr);
     string cmd;
     //string arg[10];
-    std::thread t1(keyevent);
+    //std::thread t1(keyevent);
     map<string, Media*> mapMedia;
+    CommandManager cmdm;
     while(cmd != "exit"){
         cout<< ":- ";
-        /*key = getch();
-        asciiValue = key;
-        if(asciiValue == 25){
-            cout << "ctrl-y" << endl;
-        }
-        else if(asciiValue == 26){
-            cout << "ctrl-z" << endl;
-        }
-        else{*/
         getline(cin, cmd);
         stringstream ss(cmd);
         string sub_str;
@@ -80,7 +71,6 @@ int main()
 
         if(cmd.find("def") != string::npos){
             DefCommand dc(&mapMedia, cmdBuffer[1], temp);
-            CommandManager cmdm;
             cmdm.ExecuteCMD(&dc);
         }
         else if(cmd.find(".area") != string::npos){
@@ -111,7 +101,6 @@ int main()
 
         else if (cmdBuffer[0] == "delete"){
             delCommand dc(&mapMedia, cmdBuffer);
-            CommandManager cmdm;
             cmdm.ExecuteCMD(&dc);
         }
         else if (cmd.find("show") != string::npos){
@@ -121,7 +110,6 @@ int main()
         }
         else if (cmd.find("add") != string::npos){
             AddCommand ac(&mapMedia, cmdBuffer[1], cmdBuffer[3]);
-            CommandManager cmdm;
 
             cmdm.ExecuteCMD(&ac);
 
@@ -183,8 +171,23 @@ int main()
         else{
             cout << "error" << endl;
         }
-        //}
+        ReUnCommand(&cmdm);
     }
     return 0;
 }
 
+void ReUnCommand(CommandManager *cm){
+    char key;
+    int asciiValue = 0;
+    while(asciiValue != 110){
+        cout << "ctrl+z for Undo, ctrl+y for Redo, n for continue" <<endl;
+        key = getch();
+        asciiValue = key;
+        if(asciiValue == 25){
+            cm->RedoCMD();
+        }
+        else if(asciiValue == 26){
+            cm->UndoCMD();
+        }
+    }
+}

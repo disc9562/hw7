@@ -262,3 +262,78 @@
 1482833509 c:\users\jay\desktop\posd_hw7\shapes\signal1.h
 	<_mingw.h>
 
+1483344347 source:c:\users\jay\desktop\hw7\shapes\main.cpp
+	"..\cppunitlite\TestHarness.h"
+	"utShapes.h"
+	"Document.h"
+	"Command.h"
+	"conio.h"
+	<stdio.h>
+	<string.h>
+	<string>
+	<iostream>
+	<vector>
+	<map>
+	<thread>
+	<chrono>
+	<windows.h>
+
+1483337854 c:\users\jay\desktop\hw7\cppunitlite\testharness.h
+	"Test.h"
+	"TestResult.h"
+	"Failure.h"
+	"TestRegistry.h"
+
+1483337854 c:\users\jay\desktop\hw7\cppunitlite\test.h
+	<cmath>
+	"SimpleString.h"
+
+1483337854 c:\users\jay\desktop\hw7\cppunitlite\simplestring.h
+
+1483337854 c:\users\jay\desktop\hw7\cppunitlite\testresult.h
+
+1483337854 c:\users\jay\desktop\hw7\cppunitlite\failure.h
+	"SimpleString.h"
+
+1483337854 c:\users\jay\desktop\hw7\cppunitlite\testregistry.h
+
+1483344878 c:\users\jay\desktop\hw7\shapes\utshapes.h
+	"..\cppunitlite\TestHarness.h"
+	"Shapes.h"
+	"ShapeMedia.h"
+	"Command.h"
+	<vector>
+	<math.h>
+	<map>
+	<iostream>
+
+1483337854 c:\users\jay\desktop\hw7\shapes\shapes.h
+	<vector>
+	<string>
+	<sstream>
+
+1483337854 c:\users\jay\desktop\hw7\shapes\shapemedia.h
+	"Shapes.h"
+	<vector>
+	<string>
+	<stdio.h>
+	<string.h>
+	<iostream>
+	<stack>
+	<stdlib.h>
+	<map>
+
+1483343397 c:\users\jay\desktop\hw7\shapes\command.h
+	<stack>
+	<map>
+	<string>
+	<vector>
+	"utShapes.h"
+	"Document.h"
+
+1483337854 c:\users\jay\desktop\hw7\shapes\document.h
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+

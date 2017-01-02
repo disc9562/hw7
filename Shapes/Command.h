@@ -23,22 +23,28 @@ class CommandManager{
 public:
     CommandManager(){}
     void ExecuteCMD(Command *cmd){
-        cmd->Execute();
         undocmds.push(cmd);
+        cmd->Execute();
+        while (!redocmds.empty())
+            redocmds.pop();
     }
 
     void RedoCMD(){
-        if(redocmds.empty()) return;
-        redocmds.top()->Redo();
-        undocmds.push(redocmds.top());
-        redocmds.pop();
+        cout << "Redo" << endl;
+        if(!redocmds.empty()){
+            redocmds.top()->Redo();
+            undocmds.push(redocmds.top());
+            redocmds.pop();
+        }
     }
 
     void UndoCMD(){
-        if(undocmds.empty()) return;
-        undocmds.top()->Undo();
-        redocmds.push(undocmds.top());
-        undocmds.pop();
+        cout << "Undo" << endl;
+        if(!undocmds.empty()){
+            undocmds.top()->Undo();
+            redocmds.push(undocmds.top());
+            undocmds.pop();
+        }
     }
     int getUndoSize(){
         return undocmds.size();
@@ -149,10 +155,24 @@ public:
     };
 
     void Execute(){
-        map<string, Media*>::iterator iter;
+        mediaRemove = cmdMap->find(argvBuffer[1])->second;
+        switch(argvBuffer.size()){
+            case 2:{
+                for(auto& md: *cmdMap){
+                    md.second->removeMedia(&removeVector, mediaRemove);
+                }
+                cmdMap->erase(cmdMap->find(argvBuffer[1])->first);
+            }
+                break;
+            case 4:{
+                  Media * mediaTarget = cmdMap->find(argvBuffer[3])->second;
+                  mediaTarget->removeMedia(&removeVector, mediaRemove);
+            }
+                break;
+        }
+        /*map<string, Media*>::iterator iter;
         if (argvBuffer.size() == 2){
             iter = cmdMap->find(argvBuffer[1]);
-            mediaRemove = iter->second;
             for(map<string, Media*>::iterator it = cmdMap->begin(); it != cmdMap->end(); it++){
                 it -> second -> removeMedia(&removeVector, mediaRemove);
             }
@@ -163,10 +183,9 @@ public:
             Media *cm = iter -> second;
 
             iter = cmdMap->find(argvBuffer[1]);
-            mediaRemove = iter->second;
 
             cm->removeMedia(&removeVector, mediaRemove);
-        }
+        }*/
     }
 
     void Undo(){

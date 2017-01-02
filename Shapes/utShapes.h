@@ -249,6 +249,7 @@ TEST(AddCommand, Execute){
     map<string, Media*> mediaMap;
 
     MediaBuilder md;
+    CommandManager cm;
     md.buildComboMedia();
     md.buildShapeMedia(new Circle(2,1,1));
 
@@ -258,7 +259,7 @@ TEST(AddCommand, Execute){
     mediaMap.insert(pair<string, Media*>("rTall", &r));
 
     AddCommand ac(&mediaMap, "rTall", "cSmall");
-    ac.Execute();
+    cm.ExecuteCMD(&ac);
     DescriptionVisitor dv;
     map<string, Media*>::iterator iter;
     iter = mediaMap.find("cSmall");
@@ -270,6 +271,7 @@ TEST(AddCommand, RedoUndo){
     map<string, Media*> mediaMap;
 
     MediaBuilder md;
+    CommandManager cm;
     md.buildComboMedia();
     md.buildShapeMedia(new Circle(2,1,1));
 
@@ -279,20 +281,20 @@ TEST(AddCommand, RedoUndo){
     mediaMap.insert(pair<string, Media*>("rTall", &r));
 
     AddCommand ac(&mediaMap, "rTall", "cSmall");
-    ac.Execute();
+    cm.ExecuteCMD(&ac);
     DescriptionVisitor dv;
     map<string, Media*>::iterator iter;
     iter = mediaMap.find("cSmall");
     iter -> second -> accept(&dv);
     CHECK("combo(c(2 1 1) r(0 0 4 2) )" == dv.getDescription());
 
-    ac.Undo();
+    cm.UndoCMD();
     DescriptionVisitor dv2;
     iter = mediaMap.find("cSmall");
     iter -> second -> accept(&dv2);
     CHECK("combo(c(2 1 1) )" == dv2.getDescription());
 
-    ac.Redo();
+    cm.RedoCMD();
     DescriptionVisitor dv3;
     iter = mediaMap.find("cSmall");
     iter -> second -> accept(&dv3);
@@ -306,6 +308,7 @@ TEST(delCommand, Execute){
     cmd.push_back("delete");
     cmd.push_back("rTall");
     MediaBuilder md;
+    CommandManager cm;
     md.buildComboMedia();
     md.buildShapeMedia(new Circle(2,1,1));
 
@@ -315,10 +318,10 @@ TEST(delCommand, Execute){
     mediaMap.insert(pair<string, Media*>("rTall", &r));
 
     AddCommand ac(&mediaMap, "rTall", "cSmall");
-    ac.Execute();
+    cm.ExecuteCMD(&ac);
 
     delCommand dc(&mediaMap, cmd);
-    dc.Execute();
+    cm.ExecuteCMD(&dc);
     DescriptionVisitor dv;
     map<string, Media*>::iterator iter;
     iter = mediaMap.find("cSmall");
@@ -326,15 +329,37 @@ TEST(delCommand, Execute){
     CHECK("combo(c(2 1 1) )" == dv.getDescription());
 }
 
-TEST(defCommand, Execute){
+TEST(DefCommand, Execute){
     map<string, Media*> mediaMap;
+    CommandManager cm;
     DefCommand dc(&mediaMap, "cSmall", "Circle(2,1,1)");
-    dc.Execute();
+    cm.ExecuteCMD(&dc);
 
     map<string, Media*>::iterator iter;
     DescriptionVisitor dv;
     iter = mediaMap.find("cSmall");
     iter -> second -> accept(&dv);
     CHECK("c(2 1 1) " == dv.getDescription());
+}
+
+TEST(DefCommand, RedoUndo){
+    map<string, Media*> mediaMap;
+    CommandManager cm;
+    DefCommand dc(&mediaMap, "cSmall", "Circle(2,1,1)");
+    cm.ExecuteCMD(&dc);
+
+    DefCommand dc1(&mediaMap, "rTall", "Rectangle(1,10,2,8)");
+    cm.ExecuteCMD(&dc1);
+    map<string, Media*>::iterator iter;
+    DescriptionVisitor dv;
+    iter = mediaMap.find("rTall");
+    iter -> second -> accept(&dv);
+    CHECK("r(1 10 2 8) " == dv.getDescription());
+
+    cm.UndoCMD();
+    CHECK(mediaMap.find("rTall") == mediaMap.end());
+
+    cm.RedoCMD();
+    CHECK(mediaMap.find("rTall") != mediaMap.end());
 }
 #endif // UTSHAPES_H_INCLUDED
