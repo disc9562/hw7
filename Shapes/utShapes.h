@@ -328,7 +328,33 @@ TEST(delCommand, Execute){
     iter -> second -> accept(&dv);
     CHECK("combo(c(2 1 1) )" == dv.getDescription());
 }
+TEST(delCommand, RedoUndo){
+    map<string, Media*> mediaMap;
+    vector<string> cmd;
 
+    cmd.push_back("delete");
+    cmd.push_back("rTall");
+
+    MediaBuilder md;
+    CommandManager cm;
+    //md.buildComboMedia();
+    //md.buildShapeMedia(new Circle(2,1,1));
+    ShapeMedia c(new Circle(2,1,1));
+    ShapeMedia r(new Rectangle(0,0,4,2));
+
+    mediaMap.insert(pair<string, Media*>("cSmall", &c));
+    mediaMap.insert(pair<string, Media*>("rTall", &r));
+
+    delCommand dc(&mediaMap, cmd);
+    cm.ExecuteCMD(&dc);
+    CHECK(mediaMap.find("rTall") == mediaMap.end());
+
+    cm.UndoCMD();
+    CHECK(mediaMap.find("rTall") != mediaMap.end());
+
+    cm.RedoCMD();
+    CHECK(mediaMap.find("rTall") == mediaMap.end());
+}
 TEST(DefCommand, Execute){
     map<string, Media*> mediaMap;
     CommandManager cm;

@@ -19,49 +19,24 @@
 #define VK_Y 0x59
 using namespace std;
 
-Shape * newShape(const string temp);
 void ReUnCommand(CommandManager *cm);
-/*inline bool isKeyDown(int VirtualCode)
-{
-   return (GetKeyState(VirtualCode) & HIGH_ORDER_BIT);
-}
-
-void keyevent()
-{
-   int ret;
-   while(true)
-   {
-       if(isKeyDown(VK_CONTROL))
-       {
-           //Control has been pressed
-           if(isKeyDown(VK_Z))
-           {
-                cout << "Control+Z\n";
-           }
-           else if(isKeyDown(VK_Y))
-           {
-                cout << "Control+Y\n";
-           }
-       }
-       std::this_thread::sleep_for(std::chrono::milliseconds(100));
-   }
-}*/
 
 int main()
 {
-    TestResult tr;
-    TestRegistry::runAllTests(tr);
     string cmd;
     //string arg[10];
     //std::thread t1(keyevent);
     map<string, Media*> mapMedia;
     CommandManager cmdm;
+    stringstream ss;
+    vector<string> cmdBuffer;
+    string sub_str;
     while(cmd != "exit"){
         cout<< ":- ";
         getline(cin, cmd);
-        stringstream ss(cmd);
-        string sub_str;
-        vector<string> cmdBuffer;
+        ss.str(cmd);
+        //string sub_str;
+        //vector<string> cmdBuffer;
         map<string, Media*>::iterator iter;
 
         while(getline(ss, sub_str, ' '))
@@ -100,8 +75,8 @@ int main()
         }
 
         else if (cmdBuffer[0] == "delete"){
-            delCommand dc(&mapMedia, cmdBuffer);
-            cmdm.ExecuteCMD(&dc);
+            //delCommand dc(&mapMedia, cmdBuffer);
+            cmdm.ExecuteCMD(new delCommand(&mapMedia, cmdBuffer));
         }
         else if (cmd.find("show") != string::npos){
             for(map<string, Media*>::iterator iter = mapMedia.begin(); iter != mapMedia.end(); iter++){
@@ -109,9 +84,9 @@ int main()
             }
         }
         else if (cmd.find("add") != string::npos){
-            AddCommand ac(&mapMedia, cmdBuffer[1], cmdBuffer[3]);
+            //AddCommand ac(&mapMedia, cmdBuffer[1], cmdBuffer[3]);
 
-            cmdm.ExecuteCMD(&ac);
+            cmdm.ExecuteCMD(new AddCommand(&mapMedia, cmdBuffer[1], cmdBuffer[3]));
 
             iter = mapMedia.find(cmdBuffer[3]);
             Media *cm = iter -> second;
@@ -171,6 +146,11 @@ int main()
         else{
             cout << "error" << endl;
         }
+        cmdBuffer.clear();
+        ss.str("");
+        ss.clear();
+        cin.clear();
+        cmd = sub_str = "";
         ReUnCommand(&cmdm);
     }
     return 0;
